@@ -1,0 +1,14 @@
+body {
+
+    background-color: blue;
+}
+
+
+#qr_display {
+
+background-color: lightgray;
+border: 2px, black, solid;
+width: 50%;
+float: center;
+
+}
