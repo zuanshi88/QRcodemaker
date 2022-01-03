@@ -11,17 +11,24 @@
     <div id="main">
         <div id="container">
             <div id="panel">
-                <h1>QReader</h1>
-                <div id="ptype">
-                <p>
-                    <a href="/info">QR3000</a>
-                </div>
+            <div style="margin-bottom: 100px"></div>
+<h1 style="font-family: Consolas; background-color: pink; border: 2px solid black; padding: 5px;">QR3000</h1>
+
+               
                 <br>
                 <br>
 
                 <p>
                 
-                    <%= "The time is now: #{Time.now.strftime('%H:%M')}" %>
+                
+                <h3 style="font-family: Consolas; background-color: pink; border: 2px solid black; padding: 5px;">Enter web address and submit for QR code generation</h3>
+
+            <div style="font-family: Consolas; background-color: pink; border: 2px solid black; padding: 5px;">
+                <form method="POST" action="/qr/new">
+                    <p>address: <input type="text" name="address"></p>
+                    <input type="submit">
+                </form>
+            </div>
                 
                 </p>
 

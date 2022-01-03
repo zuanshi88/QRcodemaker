@@ -29,7 +29,7 @@ class QReader < Sinatra::Base
         @svg = qrcode.as_svg(
         color: "000",
         shape_rendering: "crispEdges",
-        module_size: 2,
+        module_size: 5,
         standalone: true,
         use_path: true
         )
