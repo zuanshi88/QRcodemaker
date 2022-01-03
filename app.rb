@@ -1,53 +1,65 @@
 require 'sinatra'
-
 require "rqrcode"
+require_relative "client/Code.rb"
+require_relative "client/Person.rb"
 
 
 class QReader < Sinatra::Base
 
     get '/' do 
-        "Hey Sinatra!"
+        erb :index 
     end 
 
-    get '/:name' do 
-        "Hi, #{params[:name]}! How are you?."
+    get "/info" do 
+       erb :info
     end 
 
+    post '/my-post-route' do 
+        data = JSON.parse(request.body.read, symbolize_names: true)
+        puts "POST with #{ data.to_json } to /my-post-route"
 
+        data.to_json
+    end 
 
+    post '/qr/new' do 
 
-class Code 
+        qrcode = RQRCode::QRCode.new(params[:address])
 
-
-    # include 'rqrcode'
-  @@codes = 0
-
-  attr_reader :qrcode, :website, :code_as_svg
-
-  def initialize(website = "http://github.com/")
-    @@codes += 1
-    @qrcode = RQRCode::QRCode.new(website)
-    @website = website
-  end 
-
-  def codes 
-    @@codes
-  end 
-
-  def code 
-    @code 
-  end
-
-  def code_as_svg
-        @qrcode.as_svg(
+        # NOTE: showing with default options specified explicitly
+        @svg = qrcode.as_svg(
         color: "000",
         shape_rendering: "crispEdges",
-        module_size: 11,
+        module_size: 2,
         standalone: true,
         use_path: true
         )
+
+        erb :qrcode
     end 
 
-end 
+    # get '/public-keys' do 
+    #     content_type "application/json"
+    #     {key: ENV['STRIPE_PUBLIC_KEY'].to_json}
+    # end 
+
+    # get '/:name' do 
+    #     "Hi, #{params[:name]}! How are you?."
+    # end 
+
+    get '/ruby' do     
+
+                code = '<%john = Person.new("John")%>
+                <% john.add_touch_point(Time.now, "Went to the zoo")%>
+                <% john.add_touch_point(Time.now, "Played Parcheesie")%>
+                <% john.add_touch_point(Time.now, "Ate at Rios")%>
+                <h1><%= "#{john.name}"  %></h1>
+                <ul>
+                <% john.touchpoints.each do |point| %>
+                    <li> <%= point.date_time.strftime("%H:%M") + " : " + point.notes %></li>
+                <% end %>
+                </ul>'
+
+       erb code
+    end 
 
 end 

@@ -1,0 +1,20 @@
+body {
+
+    background-color: silver;
+    font-family: Consolas;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+#qr_display {
+
+background-color: lightgray;
+border: 2px, black, solid;
+width: 50%;
+float: center;
+
+}

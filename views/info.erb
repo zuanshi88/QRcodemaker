@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="<%= url('/style.css') %>">
+</head>
+<body>
+    <h1>INFO PAGE</h1>
+
+
+<%# <ul>
+    <li>QRcode Assigned</li>
+    <li>ORcode Displayed</li>
+    <li>QRcode Printed</li>
+</ul> %>
+
+    <h3>Enter your desired web address to transform</h3>
+
+    <form method="POST" action="/qr/new">
+        <p>address: <input type="text" name="address"></p>
+    <input type="submit">
+</form>
+</body>
+</html>

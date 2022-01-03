@@ -1,7 +1,9 @@
 require_relative "../app.rb"
+require_relative "../client/Code.rb"
 require "rqrcode"
 
-describe "can create new QR code" do 
+
+RSpec.describe "can create new QR code" do 
 
     subject {Code.new}
     
