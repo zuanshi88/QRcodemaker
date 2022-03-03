@@ -30,5 +30,8 @@ DEPENDENCIES
   rqrcode (~> 2.0)
   sinatra
 
+RUBY VERSION
+   ruby 2.6.6p146
+
 BUNDLED WITH
-   2.2.26
+   2.3.8
