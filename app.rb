@@ -1,17 +1,12 @@
 require 'sinatra'
 require "rqrcode"
-require_relative "client/Code.rb"
-require_relative "client/Person.rb"
+require_relative "model/Code.rb"
 
 
 class QReader < Sinatra::Base
 
     get '/' do 
         erb :index 
-    end 
-
-    get "/info" do 
-       erb :info
     end 
 
     post '/my-post-route' do 
